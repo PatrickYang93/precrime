@@ -1,8 +1,13 @@
 Project Name: 	Precrime
+
 Team member: 	Zheng Guo, Patrick Yang, and Ken Ellorando
+
 Starting time: 	11/11/2017 2:30 PM
+
 Ending time: 	11/12/2017 10:10 AM
+
 Time cost: 		18 hours
+
 Description:		Precrime utilizes data from the Chicago Police to determine if your 				location is dangerous, preventing possible crime.
 
  
