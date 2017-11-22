@@ -35,11 +35,11 @@ function setLocation() {
                 	}			
 				}
             }
-			marker = {};
-			marker = new google.maps.Marker({
-          		position: pos,
-          		map: map
-        	});
+			var marker = new google.maps.Marker({
+   				position: pos,
+    			map: map,
+    			icon: '../precrime/media/marker.png'
+  			});		
             map.setCenter(pos);
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -49,41 +49,31 @@ function setLocation() {
 
 function initMap() {
     $.getJSON('https://data.cityofchicago.org/resource/d62x-nvdr.json', function (data) {
-        var la = data[0].latitude;
-        var lo = data[0].longitude;	
-        la = parseFloat(la).toFixed(3);
-        lo = parseFloat(lo).toFixed(3);
-
-        var uluru = {
-            lat: parseFloat(la),
-            lng: parseFloat(lo)
+        var pos = {
+            lat: parseFloat(data[0].latitude).toFixed(3),
+            lng: parseFloat(data[0].longitude).toFixed(3)
         };
 
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
-            center: uluru,
+            center: pos,
             mapTypeId: 'terrain'
         });
 
-
         for (i = 0; i < data.length; i++) {
             var crime = data[i].primary_type
-            var la = data[i].latitude
-            var lo = data[i].longitude
-            la = parseFloat(la).toFixed(3);
-            lo = parseFloat(lo).toFixed(3);
-            var uluru = {
-                lat: parseFloat(la),
-                lng: parseFloat(lo)
+            pos = {
+                lat : parseFloat(data[i].latitude).toFixed(3),
+            	lng : parseFloat(data[i].longitude).toFixed(3)
             }
             var m = new Date();
             if ((parseFloat(data[i].date.substring(5, 7)) == (m.getMonth() + 1)) &&
                 (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT")) {
 					var bounds = {
-      						east:Number(parseFloat(lo).toFixed(3))+0.001,
-							north: Number(parseFloat(la).toFixed(3))+0.001,
-							south: Number(parseFloat(la).toFixed(3))-0.001,
-      						west: Number(parseFloat(lo).toFixed(3))-0.001
+      						east:Number(parseFloat(pos.lng).toFixed(3))+0.001,
+							north: Number(parseFloat(pos.lat).toFixed(3))+0.001,
+							south: Number(parseFloat(pos.lat).toFixed(3))-0.001,
+      						west: Number(parseFloat(pos.lng).toFixed(3))-0.001
 						}
                  	var rectangle = new google.maps.Rectangle({
     					strokeColor: '#FF0000',
