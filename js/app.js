@@ -1,4 +1,4 @@
-var map, infoWindow;
+var map, marker;
 
 /*
 function getCurrentLocation() {
@@ -35,12 +35,11 @@ function setLocation() {
                 	}			
 				}
             }
-			markers = [];
-			var marker = new google.maps.Marker({
-    			position: pos,
-				map: map
-			});
-            infoWindow.setPosition(pos);
+			marker = {};
+			marker = new google.maps.Marker({
+          		position: pos,
+          		map: map
+        	});
             map.setCenter(pos);
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -49,8 +48,6 @@ function setLocation() {
 }
 
 function initMap() {
-    infoWindow = new google.maps.InfoWindow;
-
     $.getJSON('https://data.cityofchicago.org/resource/d62x-nvdr.json', function (data) {
         var la = data[0].latitude;
         var lo = data[0].longitude;	
