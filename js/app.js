@@ -1,5 +1,6 @@
 var map, infoWindow;
 
+/*
 function getCurrentLocation() {
     $.getJSON('https://data.cityofchicago.org/resource/d62x-nvdr.json', function (data) {
         navigator.geolocation.watchPosition(function (position) {
@@ -10,6 +11,7 @@ function getCurrentLocation() {
         });
     });
 }
+*/
 
 function setLocation() {
     $.getJSON('https://data.cityofchicago.org/resource/d62x-nvdr.json', function (data) {
@@ -20,7 +22,6 @@ function setLocation() {
                 lng: position.coords.longitude
             };
 			var m = new Date();
-			 
             for (i = 0; i < data.length; i++) {
 				if ((parseFloat(data[i].date.substring(5, 7)) == (m.getMonth() + 1)) &&
                 (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT")) {
@@ -34,6 +35,7 @@ function setLocation() {
                 	}			
 				}
             }
+			markers = [];
 			var marker = new google.maps.Marker({
     			position: pos,
 				map: map
@@ -48,7 +50,6 @@ function setLocation() {
 
 function initMap() {
     infoWindow = new google.maps.InfoWindow;
-    setLocation();
 
     $.getJSON('https://data.cityofchicago.org/resource/d62x-nvdr.json', function (data) {
         var la = data[0].latitude;
@@ -99,6 +100,7 @@ function initMap() {
 				rectangle.setMap(map);
             }
         }
+		setLocation();
     });
 
 }
