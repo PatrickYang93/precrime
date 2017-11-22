@@ -24,7 +24,8 @@ function setLocation() {
 			var m = new Date();
             for (i = 0; i < data.length; i++) {
 				if ((parseFloat(data[i].date.substring(5, 7)) == (m.getMonth() + 1)) &&
-                (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT")) {
+                (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" ||
+					data[i].primary_type == "WEAPONS VIOLATION")) {
                 	if (Math.abs(Math.abs(parseFloat(data[i].latitude).toFixed(3)) -
                         Math.abs(parseFloat(pos.lat).toFixed(3))) < 0.001 &&
                     	Math.abs(Math.abs(parseFloat(data[i].longitude).toFixed(3)) -
@@ -68,7 +69,8 @@ function initMap() {
             }
             var m = new Date();
             if ((parseFloat(data[i].date.substring(5, 7)) == (m.getMonth() + 1)) &&
-                (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT")) {
+                (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" || 
+					data[i].primary_type == "WEAPONS VIOLATION")) {
 					var bounds = {
       						east:Number(parseFloat(pos.lng).toFixed(3))+0.001,
 							north: Number(parseFloat(pos.lat).toFixed(3))+0.001,
