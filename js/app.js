@@ -11,6 +11,7 @@ function setLocation() {
             for (i = 0; i < data.length; i++) {
 				if (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" ||
 					data[i].primary_type == "WEAPONS VIOLATION") {
+						console.log(data[i].latitude)
                 	if (Math.abs(Math.abs(parseFloat(data[i].latitude).toFixed(3)) -
                         Math.abs(parseFloat(pos.lat).toFixed(3))) < 0.001 &&
                     	Math.abs(Math.abs(parseFloat(data[i].longitude).toFixed(3)) -
@@ -75,5 +76,4 @@ function initMap() {
         }
 		setLocation();
     });
-
 }
