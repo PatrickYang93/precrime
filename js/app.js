@@ -2,7 +2,7 @@ var map, marker;
 
 /*
 function getCurrentLocation() {
-    $.getJSON('https://data.cityofchicago.org/resource/d62x-nvdr.json', function (data) {
+    $.getJSON('https://data.cityofchicago.org/resource/6zsd-86xi.json', function (data) {
         navigator.geolocation.watchPosition(function (position) {
             var pos = {
                 lat: position.coords.latitude,
