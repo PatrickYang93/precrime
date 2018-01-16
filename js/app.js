@@ -69,8 +69,7 @@ function initMap() {
             	lng : parseFloat(data[i].longitude).toFixed(3)
             }
             var m = new Date();
-            if ((parseFloat(data[i].date.substring(6, 8)) == (m.getMonth() + 1)) ||
-				(parseFloat(data[i].date.substring(6, 8)) == (m.getMonth())) &&
+            if (
                 (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" || 
 					data[i].primary_type == "WEAPONS VIOLATION")) {
 					var bounds = {
