@@ -1,32 +1,16 @@
 var map, marker;
 
-/*
-function getCurrentLocation() {
-    $.getJSON('https://data.cityofchicago.org/resource/6zsd-86xi.json', function (data) {
-        navigator.geolocation.watchPosition(function (position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-        });
-    });
-}
-*/
-
 function setLocation() {
     $.getJSON('https://data.cityofchicago.org/resource/6zsd-86xi.json', function (data) {
         navigator.geolocation.watchPosition(function (position) {
-
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
 			var m = new Date();
             for (i = 0; i < data.length; i++) {
-				if ((parseFloat(data[i].date.substring(6, 8)) == (m.getMonth() + 1)) ||
-				(parseFloat(data[i].date.substring(6, 8)) == (m.getMonth())) &&
-                (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" ||
-					data[i].primary_type == "WEAPONS VIOLATION")) {
+				if (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" ||
+					data[i].primary_type == "WEAPONS VIOLATION") {
                 	if (Math.abs(Math.abs(parseFloat(data[i].latitude).toFixed(3)) -
                         Math.abs(parseFloat(pos.lat).toFixed(3))) < 0.001 &&
                     	Math.abs(Math.abs(parseFloat(data[i].longitude).toFixed(3)) -
@@ -61,7 +45,7 @@ function initMap() {
             center: pos,
             mapTypeId: 'terrain'
         });
-
+		
         for (i = 0; i < data.length; i++) {
             var crime = data[i].primary_type
             pos = {
@@ -69,9 +53,8 @@ function initMap() {
             	lng : parseFloat(data[i].longitude).toFixed(3)
             }
             var m = new Date();
-            if (
-                (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" || 
-					data[i].primary_type == "WEAPONS VIOLATION")) {
+            if (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" || 
+					data[i].primary_type == "WEAPONS VIOLATION") {
 					var bounds = {
       						east:Number(parseFloat(pos.lng).toFixed(3))+0.001,
 							north: Number(parseFloat(pos.lat).toFixed(3))+0.001,
