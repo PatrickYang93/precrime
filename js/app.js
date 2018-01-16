@@ -50,7 +50,7 @@ function setLocation() {
 }
 
 function initMap() {
-    $.getJSON('https://data.cityofchicago.org/resource/d62x-nvdr.json', function (data) {
+    $.getJSON('https://data.cityofchicago.org/resource/6zsd-86xi.json', function (data) {
         var pos = {
             lat: parseFloat(data[0].latitude).toFixed(3),
             lng: parseFloat(data[0].longitude).toFixed(3)
