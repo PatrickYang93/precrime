@@ -1,7 +1,7 @@
 var map, marker;
 
 function setLocation() {
-    $.getJSON('https://data.cityofchicago.org/resource/6zsd-86xi.json', function (data) {
+    $.getJSON('https://data.cityofchicago.org/resource/d62x-nvdr.json', function (data) {
         navigator.geolocation.watchPosition(function (position) {
             var pos = {
                 lat: position.coords.latitude,
@@ -35,7 +35,7 @@ function setLocation() {
 }
 
 function initMap() {
-    $.getJSON('https://data.cityofchicago.org/resource/6zsd-86xi.json', function (data) {
+    $.getJSON('https://data.cityofchicago.org/resource/d62x-nvdr.json', function (data) {
         var pos = {
             lat: parseFloat(data[0].latitude).toFixed(3),
             lng: parseFloat(data[0].longitude).toFixed(3)
