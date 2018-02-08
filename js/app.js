@@ -38,9 +38,7 @@ function initMap() {
         var pos = {
             lat: parseFloat(data[0].latitude).toFixed(3),
             lng: parseFloat(data[0].longitude).toFixed(3)
-        };
-	
-	console.log(data)    
+        };  
 	    
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
