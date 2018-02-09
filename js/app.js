@@ -81,7 +81,7 @@ function initMap() {
             var m = new Date();
             if ((parseFloat(data[i].date.substring(5, 7)) == (m.getMonth() + 1)) &&
                 (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT")) {
-		    	console.log(parseFloat(data[i].date.substring(5, 7)), m.getMonth() + 1)
+		    	//console.log(parseFloat(data[i].date.substring(5, 7)), m.getMonth() + 1)
 					var bounds = {
       						east:Number(parseFloat(lo).toFixed(3))+0.001,
 							north: Number(parseFloat(la).toFixed(3))+0.001,
