@@ -23,9 +23,7 @@ function setLocation() {
             };
 			var m = new Date();
             for (i = 0; i < data.length; i++) {
-				if ((parseFloat(data[i].date.substring(5, 7)) == (m.getMonth() + 1)) ||
-				(parseFloat(data[i].date.substring(5, 7)) == (m.getMonth())) &&
-                (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" ||
+				if ((data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" ||
 					data[i].primary_type == "WEAPONS VIOLATION")) {
                 	if (Math.abs(Math.abs(parseFloat(data[i].latitude).toFixed(3)) -
                         Math.abs(parseFloat(pos.lat).toFixed(3))) < 0.001 &&
@@ -69,9 +67,7 @@ function initMap() {
             	lng : parseFloat(data[i].longitude).toFixed(3)
             }
             var m = new Date();
-            if ((parseFloat(data[i].date.substring(5, 7)) == (m.getMonth() + 1)) ||
-				(parseFloat(data[i].date.substring(5, 7)) == (m.getMonth())) &&
-                (data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" || 
+            if ((data[i].primary_type == "ROBBERY" || data[i].primary_type == "ASSAULT" || 
 					data[i].primary_type == "WEAPONS VIOLATION")) {
 					var bounds = {
       						east:Number(parseFloat(pos.lng).toFixed(3))+0.001,
